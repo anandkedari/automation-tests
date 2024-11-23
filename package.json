@@ -4,15 +4,15 @@
   "description": "Boilerplate for Playwright with Javascript parabank.parasoft.com",
   "main": "index.js",
   "scripts": {
-      "web": "npx playwright test --headed",
-      "web-safari": "npx playwright test --headed --project=webkit",
-      "web-chrome": "ENV=prod playwright test --headed --project=chromium"
-      
+    "web": "npx playwright test --headed",
+    "web-safari": "npx playwright test --headed --project=webkit",
+    "web-chrome": "ENV=prod playwright test --headed --project=chromium"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^9.2.0",
     "@playwright/test": "^1.49.0",
     "@types/node": "^22.9.3"
   }

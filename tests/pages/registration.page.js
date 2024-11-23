@@ -18,7 +18,7 @@ const SELECTORS = {
 export const registrationPage = {
     async enterRegistrationsDetails (data){
         await getPage().locator(SELECTORS.FIRST_NAME_INPUT).fill(data.firstName);
-        await getPage().locator(SELECTORS.LAST_NAME_INPUT).fill(data.lasttName);
+        await getPage().locator(SELECTORS.LAST_NAME_INPUT).fill(data.lastName);
         await getPage().locator(SELECTORS.ADDRESS_INPUT).fill(data.address);
         await getPage().locator(SELECTORS.CITY_INPUT).fill(data.city);
         await getPage().locator(SELECTORS.STATE_INPUT).fill(data.state);

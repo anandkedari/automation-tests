@@ -1,4 +1,5 @@
 import { ENVIRONMENT } from './constants.js';
+import { faker } from '@faker-js/faker';
 
 const fs = require('fs');
 const path = require('path');
@@ -20,7 +21,23 @@ export const Data = {
   setDataFolder(dataFolder = path.dirname(module.parent.filename)) {
     this.featureDir = dataFolder;
     return this;
+  },
+
+  randomizer (data) {
+      data.firstName = faker.person.firstName();
+      data.lastName = faker.person.lastName();
+      data.address = faker.location.streetAddress();
+      data.city = faker.location.city();
+      data.state = faker.location.state();
+      data.zip = faker.location.zipCode();
+      data.phone = faker.phone.number();
+      data.ssn = faker.number.binary({ min: 0, max: 65535 });
+      data.username = faker.internet.username();
+      data.password = faker.internet.password();
+      console.log('Registering with username -', data.username, ' , password -', data.password);
+      return data;
   }
-}
+};
+
 
 export default Data;
