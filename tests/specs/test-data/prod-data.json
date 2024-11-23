@@ -1,0 +1,21 @@
+{
+  "registered_user": {
+    "username": "1",
+    "password": "1",
+    "existingAccount": "20115",
+    "firstName": "1",
+    "lasttName": "1"
+  },
+  "new_user": {
+    "username": "",
+    "password": "test@2024",
+    "firstName": "",
+    "lasttName": "",
+    "address" : "",
+    "city" : "",
+    "state" : "",
+    "zip" : "",
+    "phone" : "",
+    "ssn" : ""
+  }
+}
