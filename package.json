@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "Boilerplate for Playwright with Javascript parabank.parasoft.com",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+      "web": "npx playwright test --headed",
+      "web-safari": "npx playwright test --headed --project=webkit",
+      "web-chrome": "ENV=prod playwright test --headed --project=chromium"
+      
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
