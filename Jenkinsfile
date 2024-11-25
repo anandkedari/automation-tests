@@ -9,10 +9,16 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Test') {
+        stage('web-tests') {
             steps {
-                sh 'npm run web'
+                sh 'npm run web:chrome'
             }
         }
+        stage('api-tests') {
+            steps {
+                sh 'npm run api'
+            }
+        }
+
     }
 }
