@@ -1,9 +1,8 @@
 const { defineConfig, devices } = require('@playwright/test');
 const env = process.env.ENV || 'prod';
-const config = require(`./config/${env}`);
+const config = require(`./config/prod`);
 
 module.exports = defineConfig({
-  testDir: './tests/specs/',
   fullyParallel: false,
   // testConfig: {
   //   mode: 'serial'
@@ -33,8 +32,10 @@ module.exports = defineConfig({
     },
     {
       name: 'api',
-      testDir: './tests/api/specs',
-      use: { baseURL: config.urls.api }
+      testDir: 'tests/api/specs',
+      use: { 
+        baseURL: config.urls.api
+      }
     },
   ],
 });
