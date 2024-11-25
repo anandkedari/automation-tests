@@ -9,7 +9,10 @@ const { defineConfig, devices } = require('@playwright/test');
 
 module.exports = defineConfig({
   testDir: './tests/specs/',
-  fullyParallel: true,
+  fullyParallel: false,
+  // testConfig: {
+  //   mode: 'serial'
+  // },
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 0 : 0,
   workers: process.env.CI ? 1 : undefined,
