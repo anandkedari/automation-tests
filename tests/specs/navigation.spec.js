@@ -4,7 +4,7 @@ import { homePage } from '../pages/home.page';
 import data from '../common/testdata';
 import { dashboardPage } from '../pages/dashboard.page';
 
-test.describe("Customer ", () => {
+test.describe("Navigation - Customer ", () => {
     let testData = data.get.registered_user;
     test("is redirected to respective page on clicking navigation menu", async({ page }) => {
         expect(await (await (await (await 

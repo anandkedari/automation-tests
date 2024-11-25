@@ -4,9 +4,8 @@ import { homePage } from '../pages/home.page';
 import data from '../common/testdata';
 import { dashboardPage } from '../pages/dashboard.page';
 
-test.describe.serial("Customer ", async () => {
+test.describe.serial("Registration - Customer ", async () => {
   let testData;
-
     test("is able to register", async({ page }) => {
       testData = data.randomizer(data.get.new_user);
       expect(await 
