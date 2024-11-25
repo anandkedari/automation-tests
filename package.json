@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "web": "npx playwright test --headed",
-    "web:safari": "BROWSER=webkit npx playwright test --headed --project=web",
-    "web:firefox": "BROWSER=firefox npx playwright test --headed --project=web",
+    "web:safari": "BROWSER=webkit ENV=prod npx playwright test --headed --project=web",
+    "web:firefox": "BROWSER=firefox ENV=prod npx playwright test --headed --project=web",
     "web:chrome": "BROWSER=chromium ENV=prod playwright test --headed --project=web",
-    "api": "playwright test --project=api"
+    "api": "ENV=prod playwright test --project=api"
   },
   "keywords": [],
   "author": "",
