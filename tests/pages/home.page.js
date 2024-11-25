@@ -24,9 +24,9 @@ export const homePage = {
         await getPage().locator(SELECTORS.REGISTER_LINK).click();
         return registrationPage;
     },
-    async login(testData){
-        await getPage().locator(SELECTORS.USERNAME_INPUT).fill(testData.firstName);
-        await getPage().locator(SELECTORS.PASSWORD_INPUT).fill(testData.lastName);
+    async login(data){
+        await getPage().locator(SELECTORS.USERNAME_INPUT).fill(data.username);
+        await getPage().locator(SELECTORS.PASSWORD_INPUT).fill(data.password);
         await getPage().locator(SELECTORS.LOGIN_BUTTON).click();
         return dashboardPage;
     }
@@ -34,3 +34,6 @@ export const homePage = {
 };
 
 export default homePage;
+
+
+

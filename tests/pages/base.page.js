@@ -8,9 +8,9 @@ export const initPage = (p) => {
 /** @returns {Page} */
 export const getPage = () => page;
 
-
-// // var globalPage;
-// export const initPage = (page) => { 
-//     globalPage = page 
-// };
-// export const getPage = () => globalPage;
+export const waitForVisible = async (selector, timeout = 5000) => {
+  await getPage().locator(selector).waitFor({ 
+    state: 'visible',
+    timeout 
+  });
+};

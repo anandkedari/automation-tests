@@ -30,6 +30,8 @@ export const registrationPage = {
         await getPage().locator(SELECTORS.PASSWORD_INPUT).fill(data.password);
         await getPage().locator(SELECTORS.PASSWORD_CONFIRM_INPUT).fill(data.password);
         await getPage().locator(SELECTORS.REGISTER_BUTTON).click();
+        console.log('First name -', data.firstName, ' , lastName  -', data.lastName);
+        console.log('Registering with username -', data.username, ' , password -', data.password);
         return this;
     },
     async getRegistrationMessge(){
