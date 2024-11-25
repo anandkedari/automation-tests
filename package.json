@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "web": "npx playwright test --headed",
-    "web-safari": "npx playwright test --headed --project=webkit",
-    "web-chrome": "ENV=prod playwright test --headed --project=chromium"
+    "web:safari": "npx playwright test --headed --project=webkit",
+    "web:chrome": "ENV=prod playwright test --headed --project=chromium"
   },
   "keywords": [],
   "author": "",
