@@ -35,7 +35,7 @@ export const Data = {
       // data.username = data.firstName.toLowerCase().substr(1,10) + Date.now().toString.substr(10);
       // trimming username as after specific length web app throws already exists error
       data.username = (faker.internet.username().toLowerCase()).substring(1,12);
-      data.password = data.lastName;
+      // data.password = data.lastName; default set to test@2024
       return data;
   }
 };

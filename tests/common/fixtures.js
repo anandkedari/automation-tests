@@ -1,5 +1,5 @@
 import { test as base, expect as exp} from '@playwright/test';
-import { initPage } from '../pages/base.page';
+import { initPage } from '../web/pages/base.page';
 
 export const test = base.extend({
   page: async ({ page }, use) => {

@@ -1,7 +1,7 @@
 // @ts-check
-import { test, expect } from '../common/fixtures';
+import { test, expect } from '../../common/fixtures';
 import { homePage } from '../pages/home.page';
-import data from '../common/testdata';
+import data from '../../common/testdata';
 import { dashboardPage } from '../pages/dashboard.page';
 
 test.describe("Navigation - Customer ", () => {
