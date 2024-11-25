@@ -24,20 +24,23 @@ export const Data = {
   },
 
   randomizer (data) {
+      let date = new Date();
+      let timestemp = date.getMonth() + date.getDate() + date.getHours() + date.getMinutes();
       data.firstName = faker.person.firstName();
       data.lastName = faker.person.lastName();
       data.address = faker.location.streetAddress();
       data.city = faker.location.city();
       data.state = faker.location.state();
       data.zip = faker.location.zipCode();
-      data.phone = faker.phone.number();
-      data.ssn = faker.number.binary({ min: 0, max: 65535 });
-      data.username = faker.internet.username();
-      data.password = faker.internet.password();
+      data.phone = "1";//faker.phone.number()
+      data.ssn = "1";
+      // data.username = data.firstName.toLowerCase().substr(1,10) + Date.now().toString.substr(10);
+      data.username = (faker.internet.username().toLowerCase()).substring(1,12);
+      data.password = data.lastName;
+      console.log('First name -', data.firstName, ' , lastName  -', data.lastName);
       console.log('Registering with username -', data.username, ' , password -', data.password);
       return data;
   }
 };
-
 
 export default Data;
