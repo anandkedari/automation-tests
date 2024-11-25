@@ -13,6 +13,7 @@ const SELECTORS = {
   PASSWORD_INPUT: 'input[id="customer.password"]',
   PASSWORD_CONFIRM_INPUT: 'input[id="repeatedPassword"]',
   REGISTER_BUTTON: 'input[type="submit"][value="Register"]',
+  REGISTER_MESSAGE_LABEL: 'div[id="rightPanel"] p',
 };
 
 export const registrationPage = {
@@ -24,13 +25,16 @@ export const registrationPage = {
         await getPage().locator(SELECTORS.STATE_INPUT).fill(data.state);
         await getPage().locator(SELECTORS.ZIP_INPUT).fill(data.zip);
         await getPage().locator(SELECTORS.PHONE_INPUT).fill(data.phone);
-        await getPage().locator(SELECTORS.SSN_INPUT).fill(data.ssn);
+        await getPage().locator(SELECTORS.SSN_INPUT).fill("1");
         await getPage().locator(SELECTORS.USERNAME_INPUT).fill(data.username);
         await getPage().locator(SELECTORS.PASSWORD_INPUT).fill(data.password);
         await getPage().locator(SELECTORS.PASSWORD_CONFIRM_INPUT).fill(data.password);
         await getPage().locator(SELECTORS.REGISTER_BUTTON).click();
         return this;
     },
+    async getRegistrationMessge(){
+        return await (getPage().locator(SELECTORS.REGISTER_MESSAGE_LABEL).textContent());
+    }
 };
 
 export default registrationPage;
