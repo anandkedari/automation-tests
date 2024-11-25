@@ -1,7 +1,6 @@
-import { time } from "console";
 import { getPage, waitForVisible } from "./base.page";
 import {homePage} from "./home.page";
-import { get } from "http";
+import {billpayPage} from "./billpay.page";
 
 const SELECTORS = {
   TOPNAVIGATION_HOME_ICON: 'div[id="headerPanel"] ul li[class="home"]',
@@ -77,7 +76,12 @@ export const dashboardPage = {
     async getAvailableBalance(accountNo){
         await waitForVisible(SELECTORS.ACCOUNT_AVAILABLE_BALANCE_LABEL(accountNo));
         return await (getPage().locator(SELECTORS.ACCOUNT_AVAILABLE_BALANCE_LABEL(accountNo)).textContent());
-    }    
+    },
+    async navigateToBillPay(){
+        await waitForVisible(SELECTORS.LEFT_BILLPAY_LINK);
+        await (getPage().locator(SELECTORS.LEFT_BILLPAY_LINK).click());        
+        return billpayPage;
+    },    
 };
 
 export default dashboardPage;

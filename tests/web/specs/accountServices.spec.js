@@ -17,7 +17,15 @@ test.describe("Account Services - Customer ", () => {
         ", AvailableBalance - " + await dashboardPage.getAvailableBalance(newAccountNo));
     });
     // test("is able to transfer funds from newly created account", async({ page }) => {
+        //website is down
     // });
-    // test("is able to pay bills from newly created account", async({ page }) => {
-    // });
+    test("is able to pay bills from newly created account", async({ page }) => {
+        let billpayData = data.get.billpayment;
+        let successMessage = (await (await (await 
+                                homePage.navigateToHomePage())
+                                .login(testData)).navigateToBillPay())
+                                .payBill(billpayData, newAccountNo);
+        expect(successMessage)
+        .toMatch(/Bill Payment to * in the amount of $11.00 from account * was successful./);
+    });
 });

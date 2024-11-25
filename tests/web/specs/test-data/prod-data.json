@@ -17,5 +17,15 @@
     "zip" : "",
     "phone" : "",
     "ssn" : ""
+  },
+  "billpayment": {
+    "name": "TestName",
+    "address" : "Address of test user",
+    "city" : "HelloCity",
+    "state" : "StateState",
+    "zip" : "112233",
+    "phone" : "42424242",
+    "accountno" : "987654321",
+    "amount" : "11"
   }
 }
