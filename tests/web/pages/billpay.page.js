@@ -1,5 +1,4 @@
-import { getPage } from './base.page';
-import {dashboardPage} from "./dashboard.page";
+import { getPage, waitForVisible, selectItemFromDropdown } from './base.page';
 
 const SELECTORS = {
   PAYEE_NAME_INPUT: 'input[name="payee.name"]',
@@ -30,13 +29,16 @@ export const billpayPage = {
         await getPage().locator(SELECTORS.PAYEE_ACCOUNTNO_INPUT).fill(data.accountno);
         await getPage().locator(SELECTORS.PAYEE_ACCOUNTNO_VERIFY_INPUT).fill(data.accountno);
         await getPage().locator(SELECTORS.AMOUNT_INPUT).fill(data.amount);
-        await getPage().selectOption(SELECTORS.FROM_ACCOUNT_DROPDOWN, { value: fromAccount });
+        await selectItemFromDropdown(SELECTORS.FROM_ACCOUNT_DROPDOWN, fromAccount);
         await getPage().locator(SELECTORS.SEND_PAYMENT_BUTTON).click();
-        return dashboardPage;
+        return this;
     },
     async successMessage(){
         await waitForVisible(SELECTORS.SUCCESS_MESSAGE_LABEL);
-        return await (getPage().locator(SELECTORS.SUCCESS_MESSAGE_LABEL).textContent());
+        let message =  await (getPage().locator(SELECTORS.SUCCESS_MESSAGE_LABEL).textContent());
+        message = message.trim();
+        console.log("Success Message - " + message);
+        return message;
     }
 };
 

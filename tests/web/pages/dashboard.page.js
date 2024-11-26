@@ -1,8 +1,12 @@
 import { getPage, waitForVisible } from "./base.page";
 import {homePage} from "./home.page";
 import {billpayPage} from "./billpay.page";
+import {fundtransferPage} from "./fundtransfer.page";
 
 const SELECTORS = {
+  WELCOME_LABEL: (welcomeText) => {
+    return `div[id="leftPanel"] p:has-text("${welcomeText}")`;
+  },  
   TOPNAVIGATION_HOME_ICON: 'div[id="headerPanel"] ul li[class="home"]',
   TOPNAVIGATION_ABOUTUS_ICON: 'div[id="headerPanel"] ul li[class="aboutus"]',
   TOPNAVIGATION_CONTACT_ICON: 'div[id="headerPanel"] ul li[class="contact"]',
@@ -19,16 +23,18 @@ const SELECTORS = {
   OPEN_ACCOUNT_BUTTON : 'div[id="openAccountForm"] input[value="Open New Account"]',  
   NEW_ACCOUNTNO_LABEL : 'div[id="openAccountResult"] a[id="newAccountId"]',
   ACCOUNT_BALANCE_LABEL : (accountNo) => {
-    return `table[id="accountTable"] td:has(> a[href="activity.htm?id=${accountNo}"]) + td`
+    return `table[id="accountTable"] td:has(> a[href="activity.htm?id=${accountNo}"]) + td`;
   },
   ACCOUNT_AVAILABLE_BALANCE_LABEL : (accountNo) => {
-    return `table[id="accountTable"] td:has(> a[href="activity.htm?id=${accountNo}"]) + td + td`
+    return `table[id="accountTable"] td:has(> a[href="activity.htm?id=${accountNo}"]) + td + td`;
   },
 };
 
 export const dashboardPage = {
-    async isAccountTableVisible(){
-        return await getPage().locator(SELECTORS.SECTION_ACCOUNT_OVERVIEW_TABLE).isVisible();
+    async isLoggedIn(data){
+        await waitForVisible(SELECTORS.WELCOME_LABEL(`Welcome ${data.firstName} ${data.lastName}`));
+        await waitForVisible(SELECTORS.WELCOME_LABEL(`Welcome ${data.firstName} ${data.lastName}`));
+        return true;
     },
     async isAccServicesSectionVisible(){
         return await getPage().locator(SELECTORS.SECTION_ACCOUNT_SERVICES).isVisible();
@@ -81,7 +87,12 @@ export const dashboardPage = {
         await waitForVisible(SELECTORS.LEFT_BILLPAY_LINK);
         await (getPage().locator(SELECTORS.LEFT_BILLPAY_LINK).click());        
         return billpayPage;
-    },    
+    },
+    async navigateToFundTransfer(){
+        await waitForVisible(SELECTORS.LEFT_TRANSFER_FUNDS_LINK);
+        await (getPage().locator(SELECTORS.LEFT_TRANSFER_FUNDS_LINK).click());        
+        return fundtransferPage;
+    },
 };
 
 export default dashboardPage;
