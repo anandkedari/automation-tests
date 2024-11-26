@@ -6,7 +6,7 @@ export const test = base.extend({
     username:"",
     password:"",
     newAccountNo:"",
-    findTransactionAmount:""
+    amount:""
   },
 
   request: async ({}, use) => {

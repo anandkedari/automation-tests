@@ -3,14 +3,13 @@ import { test, expect } from '../../common/fixtures';
 import { homePage } from '../../pages/home.page'
 import data from '../../common/testdata';
 import { dashboardPage } from '../../pages/dashboard.page';
-import {crossTestSharedData} from '../../common/constants';
 
 let testData;
 test.describe("Registration - Customer ", async () => {
-    test("is able to register", async({ page }) => {
+    test("is able to register", async({ page, sharedData }) => {
       testData = data.randomizer(data.get.new_user);
-    crossTestSharedData.username = testData.username;
-    crossTestSharedData.password = testData.password;
+      sharedData.username = testData.username;
+      sharedData.password = testData.password;
       expect(await 
         (await (await (await homePage.navigateToHomePage())
             .navigateToRegistrationPage())
@@ -47,19 +46,21 @@ test.describe("Navigation - Customer ", () => {
 
 test.describe("Account Services - Customer ", () => {
     let newAccountNo;
-    test("is able to open new account and validate account balances", async({ page }) => {
+    test("is able to open new account and validate account balances", async({ page, sharedData }) => {
         newAccountNo = await (await (await 
             homePage.navigateToHomePage())
             .login(testData))
             .openNewAccount();
         console.log("New account number - " + newAccountNo);
+        sharedData.newAccountNo = (newAccountNo==undefined ? '' : newAccountNo);
         let accBalance = (await dashboardPage.getAccountBalance(newAccountNo))?.trim();
         let availableBal = (await dashboardPage.getAvailableBalance(newAccountNo))?.trim();
         expect(accBalance).toMatch(/\$\d+.00/);
         expect(availableBal).toMatch(/\$\d+.00/);
     });
-    test("is able to transfer funds from newly created account", async({ page }) => {
+    test("is able to transfer funds from newly created account", async({ page, sharedData }) => {
         let transferAmount = "11";
+        sharedData.amount = transferAmount;
         let successMessage = await (await (await (await (await 
                                 homePage.navigateToHomePage())
                                 .login(testData)).navigateToFundTransfer())

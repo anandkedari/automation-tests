@@ -3,8 +3,7 @@ import {getToken, getTransactionByAmount} from '../../endpoints/apis';
 
 test.describe('API Tests - ', () => {
     test('Find transaction by amount', async ({ request, sharedData }) => {
-      // console.log('sharedData - ' + JSON.stringify(await sharedData));
-      const response = await request.get('https://parabank.parasoft.com/parabank/services_proxy/bank/accounts/16674/transactions/amount/11', {
+      const response = await request.get(`https://parabank.parasoft.com/parabank/services_proxy/bank/accounts/${sharedData.newAccountNo}/transactions/amount/${sharedData.amount}`, {
                 Headers:{ 'Cookie': await getToken(request) }
             });
       const body = await response.json();
