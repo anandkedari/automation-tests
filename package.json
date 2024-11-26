@@ -4,11 +4,11 @@
   "description": "Boilerplate for Playwright with Javascript parabank.parasoft.com",
   "main": "index.js",
   "scripts": {
-    "web:safari": "BROWSER=webkit ENV=prod npx playwright test --headed --project=web",
-    "web:firefox": "BROWSER=firefox ENV=prod npx playwright test --headed --project=web",
-    "web:chrome": "BROWSER=chromium ENV=prod playwright test --headed --project=web",
-    "api": "ENV=prod playwright test --project=api",
-    "test": "ENV=prod npm run web:chrome && npm run api"
+    "web:safari": "BROWSER=webkit ENV=prod npx playwright test --headed",
+    "web:firefox": "BROWSER=firefox ENV=prod npx playwright test --headed",
+    "web:chrome": "BROWSER=chromium ENV=prod playwright test --headed",
+    "api": "ENV=prod SPECFOLDER=tests/specs/api playwright test",
+    "test": "ENV=prod SPECFOLDER=tests/specs playwright test"
   },
   "keywords": [],
   "author": "",

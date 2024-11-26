@@ -1,15 +1,16 @@
 // @ts-check
 import { test, expect } from '../../common/fixtures';
-import { homePage } from '../pages/home.page';
+import { homePage } from '../../pages/home.page'
 import data from '../../common/testdata';
-import { dashboardPage } from '../pages/dashboard.page';
+import { dashboardPage } from '../../pages/dashboard.page';
+import {crossTestSharedData} from '../../common/constants';
 
 let testData;
 test.describe("Registration - Customer ", async () => {
     test("is able to register", async({ page }) => {
       testData = data.randomizer(data.get.new_user);
-    //   sharedData.username = testData.username;
-    //   sharedData.password = testData.password;
+    crossTestSharedData.username = testData.username;
+    crossTestSharedData.password = testData.password;
       expect(await 
         (await (await (await homePage.navigateToHomePage())
             .navigateToRegistrationPage())

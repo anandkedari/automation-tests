@@ -1,8 +1,5 @@
 module.exports = {
-  urls: {
-    web: 'https://parabank.parasoft.com',
-    api: 'https://parabank.parasoft.com/parabank',
-  },
+  url: 'https://parabank.parasoft.com',
   timeouts: {
     pageLoad: 30000,
     element: 10000,

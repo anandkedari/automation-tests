@@ -1,5 +1,5 @@
 import { test as base, expect as exp, request as req} from '@playwright/test';
-import { initPage } from '../web/pages/base.page';
+import { initPage } from '../pages/base.page';
 
 export const test = base.extend({
   sharedData: {

@@ -1,15 +1,16 @@
+import { ENVIRONMENT, TESTFOLDER } from './tests/common/constants';
 const { defineConfig, devices } = require('@playwright/test');
-const env = process.env.ENV || 'prod';
-const config = require(`./config/prod`);
+const config = require(`./config/${ENVIRONMENT}`);
 
 module.exports = defineConfig({
   fullyParallel: false,
   // testConfig: {
   //   mode: 'serial'
   // },
+  testDir: TESTFOLDER,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 0 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  workers: 1,
   reporter: [
     ['html', { open: 'never' }],
     ['list']
@@ -17,26 +18,18 @@ module.exports = defineConfig({
   use: {
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure',
+    baseURL:  config.url,
   },
   timeout: config.timeouts.pageLoad,
   retries: config.retries.web,
 
   projects: [
     {
-      name: 'web',
-      testDir: 'tests/web/specs',
+      name: 'test',
       use: {
-        browserName: process.env.BROWSER || 'chromium',
-        baseURL: config.urls.web
+        browserName: process.env.BROWSER || 'chromium'
       }
-    },
-    {
-      name: 'api',
-      testDir: 'tests/api/specs',
-      use: { 
-        baseURL: config.urls.api
-      }
-    },
+    }
   ],
 });
 

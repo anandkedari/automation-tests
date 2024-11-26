@@ -8,8 +8,7 @@ const dataFileName = ENVIRONMENT + '-data.json';
 
 export const Data = {
   get get() {
-    this.setDataFolder();
-    let dataFilePath = this.featureDir + path.sep + dataFolderName + path.sep + dataFileName;
+    let dataFilePath = `tests/${dataFolderName}/${dataFileName}`;    
     try {
       var data = JSON.parse(fs.readFileSync(dataFilePath, 'utf8'));
     } catch (e) {
@@ -17,10 +16,6 @@ export const Data = {
       throw new Error(error);
     }
     return data;
-  },
-  setDataFolder(dataFolder = path.dirname(module.parent.filename)) {
-    this.featureDir = dataFolder;
-    return this;
   },
 
   randomizer (data) {
