@@ -1,6 +1,5 @@
 import { test, expect } from '../../common/fixtures';
 import {getToken, getTransactionByAmount} from '../../endpoints/apis';
-import {crossTestSharedData} from '../../common/constants';
 
 test.describe('API Tests - ', () => {
     test('Find transaction by amount', async ({ request, sharedData }) => {
