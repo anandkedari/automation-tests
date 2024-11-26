@@ -1,5 +1,5 @@
-import { ENVIRONMENT, TESTFOLDER } from './tests/common/constants';
-const { defineConfig, devices } = require('@playwright/test');
+import { ENVIRONMENT, TESTFOLDER, BROWSER_NAME } from './tests/common/constants';
+const { defineConfig } = require('@playwright/test');
 const config = require(`./config/${ENVIRONMENT}`);
 
 module.exports = defineConfig({
@@ -27,7 +27,7 @@ module.exports = defineConfig({
     {
       name: 'test',
       use: {
-        browserName: process.env.BROWSER || 'chromium'
+        browserName: BROWSER_NAME
       }
     }
   ],
