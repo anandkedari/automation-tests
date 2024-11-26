@@ -1,4 +1,4 @@
-import { ENVIRONMENT, TESTFOLDER, BROWSER_NAME } from './tests/common/constants';
+import { ENVIRONMENT, TESTFOLDER, BROWSER_NAME } from './common/constants';
 const { defineConfig } = require('@playwright/test');
 const config = require(`./config/${ENVIRONMENT}`);
 

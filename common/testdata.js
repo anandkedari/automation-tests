@@ -8,7 +8,7 @@ const dataFileName = ENVIRONMENT + '-data.json';
 
 export const Data = {
   get get() {
-    let dataFilePath = `tests/${dataFolderName}/${dataFileName}`;    
+    let dataFilePath = `${dataFolderName}/${dataFileName}`;    
     try {
       var data = JSON.parse(fs.readFileSync(dataFilePath, 'utf8'));
     } catch (e) {
