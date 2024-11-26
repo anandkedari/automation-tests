@@ -8,8 +8,8 @@ Boilerplate for Playwright with Javascript parabank.parasoft.com
 
 ## Running Tests
 ## Web
-  - All web tests on all browsers (Chrome, Safari, Mozilla): `npm run web`
-  - Specific browser: `npm run web:chrome` or  `npm run web:safari`
+  - All web tests on specific browser (Chrome, Safari, Mozilla): 
+      `npm run web:chrome` or `npm run web:safari` or `npm run web:firefox`
 
 ## API
   - All api tests :`npm run api`
