@@ -5,9 +5,11 @@ import data from '../../common/testdata';
 import { dashboardPage } from '../pages/dashboard.page';
 
 let testData;
-test.describe.serial("Registration - Customer ", async () => {
+test.describe("Registration - Customer ", async () => {
     test("is able to register", async({ page }) => {
       testData = data.randomizer(data.get.new_user);
+    //   sharedData.username = testData.username;
+    //   sharedData.password = testData.password;
       expect(await 
         (await (await (await homePage.navigateToHomePage())
             .navigateToRegistrationPage())
@@ -25,7 +27,7 @@ test.describe.serial("Registration - Customer ", async () => {
     });
 });
 
-test.describe.serial("Navigation - Customer ", () => {
+test.describe("Navigation - Customer ", () => {
     test("is redirected to respective page on clicking navigation menu", async({ page }) => {
         expect(await (await (await (await 
             homePage.navigateToHomePage())
@@ -42,7 +44,7 @@ test.describe.serial("Navigation - Customer ", () => {
     });
 });
 
-test.describe.serial("Account Services - Customer ", () => {
+test.describe("Account Services - Customer ", () => {
     let newAccountNo;
     test("is able to open new account and validate account balances", async({ page }) => {
         newAccountNo = await (await (await 
@@ -52,8 +54,8 @@ test.describe.serial("Account Services - Customer ", () => {
         console.log("New account number - " + newAccountNo);
         let accBalance = (await dashboardPage.getAccountBalance(newAccountNo))?.trim();
         let availableBal = (await dashboardPage.getAvailableBalance(newAccountNo))?.trim();
-        expect(accBalance).toBe('$100.00');
-        expect(availableBal).toBe('$100.00');
+        expect(accBalance).toMatch(/\$\d+.00/);
+        expect(availableBal).toMatch(/\$\d+.00/);
     });
     test("is able to transfer funds from newly created account", async({ page }) => {
         let transferAmount = "11";

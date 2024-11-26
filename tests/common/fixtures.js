@@ -1,7 +1,19 @@
-import { test as base, expect as exp} from '@playwright/test';
+import { test as base, expect as exp, request as req} from '@playwright/test';
 import { initPage } from '../web/pages/base.page';
 
 export const test = base.extend({
+  sharedData: {
+    username:"",
+    password:"",
+    newAccountNo:"",
+    findTransactionAmount:""
+  },
+
+  request: async ({}, use) => {
+    const context = await request.newContext();
+    await use(context);
+  },
+
   page: async ({ page }, use) => {
     initPage(page);
     await use(page);
@@ -11,3 +23,4 @@ export const test = base.extend({
 test.describe.configure({ mode: 'serial' });
 
 export const expect = exp;
+export const request = req;
