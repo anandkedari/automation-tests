@@ -8,7 +8,7 @@
     "web:firefox": "BROWSER=firefox ENV=prod npx playwright test --headed",
     "web:chrome": "BROWSER=chromium ENV=prod playwright test --headed",
     "api": "ENV=prod SPECFOLDER=specs/api playwright test",
-    "test": "ENV=prod SPECFOLDER=specs playwright test"
+    "test": "npm run web:chrome && npm run api"
   },
   "keywords": [],
   "author": "",

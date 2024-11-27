@@ -19,9 +19,9 @@ export const homePage = {
         await getPage().locator(SELECTORS.REGISTER_LINK).click();
         return registrationPage;
     },
-    async login(data){
-        await getPage().locator(SELECTORS.USERNAME_INPUT).fill(data.username);
-        await getPage().locator(SELECTORS.PASSWORD_INPUT).fill(data.password);
+    async login(username, password){
+        await getPage().locator(SELECTORS.USERNAME_INPUT).fill(username);
+        await getPage().locator(SELECTORS.PASSWORD_INPUT).fill(password);
         await getPage().locator(SELECTORS.LOGIN_BUTTON).click();
         return dashboardPage;
     }

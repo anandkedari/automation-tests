@@ -1,8 +1,8 @@
-export const getToken = async (request) => {
-        const response = await request.post('https://parabank.parasoft.com/parabank/login.htm', {
+export const getToken = async (request, _username, _password) => {
+        const response = await request.post('/parabank/login.htm', {
             params: {
-            username: 'illiam0',
-            password: 'test@2024'
+            username: _username,
+            password: _password
             }
         });
         let cookies = JSON.stringify(await response._initializer.url).replaceAll("",'').split(";")[1];
